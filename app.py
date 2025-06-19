@@ -11,8 +11,8 @@ import pandas as pd
 
 import pickle
 
-df = pickle.load(open(r'D:\datasets\movies\movies.pkl', 'rb'))
-similarity = pickle.load(open(r'D:\datasets\movies\similarity.pkl', 'rb'))
+df = pickle.load(open(r'movies.pkl', 'rb'))
+similarity = pickle.load(open(r'similarity.pkl', 'rb'))
 
 def recommend(movie):
     movie = movie.lower()
