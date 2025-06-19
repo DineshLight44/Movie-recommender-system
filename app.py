@@ -9,12 +9,10 @@ import streamlit as st
 import pickle
 import pandas as pd
 
-# Load model and data
 import pickle
 
 df = pickle.load(open(r'D:\datasets\movies\movies.pkl', 'rb'))
 similarity = pickle.load(open(r'D:\datasets\movies\similarity.pkl', 'rb'))
-
 
 def recommend(movie):
     movie = movie.lower()
@@ -25,13 +23,10 @@ def recommend(movie):
     movie_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
     return [df.iloc[i[0]].title for i in movie_list]
 
-# Streamlit UI
 st.title('🎥 Movie Recommender System')
 
-# Movie input
 movie_name = st.text_input('Enter a movie name:')
 
-# Recommend button
 if st.button('Recommend'):
     recommendations = recommend(movie_name)
     st.write("### Recommended Movies:")
